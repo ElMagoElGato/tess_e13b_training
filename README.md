@@ -86,9 +86,9 @@ E13B has some narrow characters while they are printed in the same pitch.  Sligh
 ### Too many characters
 It's a common phenomena across tesseract recognition.  In the case of E13B font, good training text and enough iterations eliminate these.
 ## Useful commands
-Pick all the files in the current directory and make hocr output with character boundary boxes.  This can be done easily by using API, too.  See https://github.com/tesseract-ocr/tesseract/wiki/APIExample#result-iterator-example and change RIL_WORD to RIL_SYMBOL.
+Pick all the files in the directory and make hocr output with character boundary boxes.  This can be done easily by using API, too.  See https://github.com/tesseract-ocr/tesseract/wiki/APIExample#result-iterator-example and change RIL_WORD to RIL_SYMBOL.
 ```
-ls -1d /imagedir/*|tesseract stdin stdout -c lstm_choice_mode=4 -c lstm_choice_amount=0 -c hocr_char_boxes=1 ../tesseract/tessdata/configs/hocr
+ls -1d /imagedir/*|tesseract stdin stdout -c lstm_choice_mode=4 -c lstm_choice_amount=0 -c hocr_char_boxes=1 hocr
 ```
 Lists fonts available in the system:
 ```
