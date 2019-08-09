@@ -51,7 +51,7 @@ src/training/lstmtraining --stop_training \
   --model_output ~/tesstutorial/e13b_from_full/eng.traineddata
 ```
 ## Training from scratch
-Make training if it isn't done yet. Then execute training.  5,000 iterations don't seem enough.  10,000 iterations seem good enough.
+Make training data if it isn't done yet. Then execute training.  5,000 iterations don't seem enough.  10,000 iterations seem good enough.
 ```
 rm -r ~/tesstutorial/e13boutput
 mkdir -p ~/tesstutorial/e13boutput
