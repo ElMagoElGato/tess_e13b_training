@@ -1,5 +1,5 @@
 # tess_e13b_training
-Describes how to train E13B or MICR font for tesseract.
+Describes how to train E13B or MICR font for tesseract.  I recommend to use the scratch method to get better result.  Fine tuning from existing eng.traineddata retains its reading capability and it wrongfully drags character bounding around MICR symbols at times.
 ## E13B or MICR font
 You should find a font somewhere.  The name of mine is E13Bnsd.  I'm sorry but I can't put it here because it isn't mine or free, either.  Please change the font name in the commands below to your font.
 
@@ -28,7 +28,7 @@ src/training/tesstrain.sh --fonts_dir /usr/share/fonts --lang eng --linedata_onl
   --fontlist "E13Bnsd" --output_dir ~/tesstutorial/e13beval \
   --training_text ../langdata/eng/eng.training_e13b_text
 ```
-## Training from full eng.traineddata
+## Fine tuning from full eng.traineddata
 Second, execute training.  Use --old_traineddata to get the effect as described for fine-tunining on a few characters.
 ```
 rm -r ~/tesstutorial/e13b_from_full
