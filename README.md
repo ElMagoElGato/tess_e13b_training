@@ -48,7 +48,7 @@ Finally, make traineddata.
 src/training/lstmtraining --stop_training \
   --continue_from ~/tesstutorial/e13b_from_full/e13b_checkpoint \
   --traineddata ~/tesstutorial/e13beval/eng/eng.traineddata \
-  --model_output ~/tesstutorial/e13b_from_full/eng.traineddata
+  --model_output ~/tesstutorial/e13b_from_full/e13b.traineddata
 ```
 ## Training from scratch
 Make training data if it isn't done yet. Then execute training.  5,000 iterations don't seem enough.  10,000 iterations seem good enough.
@@ -68,12 +68,12 @@ Finally, make traineddata.
 src/training/lstmtraining --stop_training \
   --continue_from ~/tesstutorial/e13boutput/base_checkpoint \
   --traineddata ~/tesstutorial/e13beval/eng/eng.traineddata \
-  --model_output ~/tesstutorial/e13boutput/eng.traineddata
+  --model_output ~/tesstutorial/e13boutput/e13b.traineddata
 ```
 ## Phantom Characters
 Phantom characters are those that appear in the result text though they don't seem to exist on the original image.
 ### MICR symbols
-The on-us symbol is the bigget problem.  It tends to appear like this:
+The on-us symbol is the biggest problem.  It tends to appear like this:
 ```
 <span class='ocrx_cinfo' title='x_bboxes 1259 902 1262 933; x_conf 98.864532'>&lt;</span>
 <span class='ocrx_cinfo' title='x_bboxes 1259 904 1281 933; x_conf 99.018097'>;</span>
@@ -82,13 +82,13 @@ The first one is a phantom character that starts at the same x axis as the next 
 
 Good training text basically eliminates these phantom characters.  The --old_traineddata option serves an important role, too.
 ### Spaces
-E13B has some narrow characters while they are printed in the same pitch.  Slightly larger spaces between them are picked up as word breaks.  Good training text and enouh iterations eliminate these.
+E13B has some narrow characters while they are printed in the same pitch.  Slightly larger spaces between characters are picked up as word breaks.  Good training text and enouh iterations eliminate these.
 ### Too many characters
 It's a common phenomena across tesseract recognition.  In the case of E13B font, good training text and enough iterations eliminate these.
 ## Useful commands
 Pick all the files in the directory and make hocr output with character boundary boxes.  This can be done easily by using API, too.  See https://github.com/tesseract-ocr/tesseract/wiki/APIExample#result-iterator-example and change RIL_WORD to RIL_SYMBOL.
 ```
-ls -1d /imagedir/*|tesseract stdin stdout -c lstm_choice_mode=4 -c lstm_choice_amount=0 -c hocr_char_boxes=1 hocr
+ls -1d /imagedir/*|tesseract -l e13b stdin stdout -c lstm_choice_mode=4 -c lstm_choice_amount=0 -c hocr_char_boxes=1 hocr
 ```
 Lists fonts available in the system:
 ```
