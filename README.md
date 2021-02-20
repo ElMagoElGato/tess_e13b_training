@@ -15,7 +15,7 @@ It's the file, eng.training_e13b_text.  It has about 20,000 lines and is divided
 ### Lines 1 to 4014
 These lines are typical encoding patterns in real life.  I guess these lines should be changed to your case.
 ### Lines 4015 to 12718
-I borrowed these lines from https://github.com/Shreeshrii/tessdata_shreetest/blob/master/eng.digits.training_text. I changed non-numerical characters to MICR symbols.
+I borrowed these lines from eng.digits.training_text in tessdata_shreetest of Shreeshrii's repository. I changed non-numerical characters to MICR symbols.
 ### Lines 12719 to end (20318)
 I randomly generated lines like shree's text above but with more symbols than numerics.  Each MICR symbol is consit of multiple particles.  They are dificult characters to recognize.  So I thought I'd need more of them.  Also, I put spaces here and there because word boxing seems to be a key functionality of tesseract.  One long word in one line seems to give less training.
 ## Make training data
@@ -86,7 +86,7 @@ E13B has some narrow characters while they are printed in the same pitch.  Sligh
 ### Too many characters
 It's a common phenomena across tesseract recognition.  In the case of E13B font, good training text and enough iterations eliminate these.
 ## Useful commands
-Pick all the files in the directory and make hocr output with character boundary boxes.  This can be done easily by using API, too.  See https://github.com/tesseract-ocr/tesseract/wiki/APIExample#result-iterator-example and change RIL_WORD to RIL_SYMBOL.
+Pick all the files in the directory and make hocr output with character boundary boxes.  This can be done easily by using API, too.  See APIExample in tessdoc of tesseract-ocr repository. Locate "Result iterator example" and change RIL_WORD to RIL_SYMBOL, or just "Example of iterator over the classifier choices for a single symbol."
 ```
 ls -1d /imagedir/*|tesseract -l e13b stdin stdout -c lstm_choice_mode=4 -c lstm_choice_amount=0 -c hocr_char_boxes=1 hocr
 ```
@@ -94,3 +94,6 @@ Lists fonts available in the system:
 ```
 text2image --list_available_fonts --fonts_dir=/usr/share/fonts/
 ```
+## Reference site
+* Tesseract repository of course: https://github.com/tesseract-ocr
+* I consulted the Shreeshrii's repository a lot and found it very helpful: https://github.com/Shreeshrii
