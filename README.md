@@ -15,7 +15,7 @@ It's the file, eng.training_e13b_text.  It has about 20,000 lines and is divided
 ### Lines 1 to 4014
 These lines are typical encoding patterns in real life.  I guess these lines should be changed to your case.
 ### Lines 4015 to 12718
-I borrowed these lines from https://github.com/Shreeshrii/tessdata_shreetest/eng.digits.training_text. I changed non-numerical characters to MICR symbols.
+I borrowed these lines from https://github.com/Shreeshrii/tessdata_shreetest/blob/master/eng.digits.training_text. I changed non-numerical characters to MICR symbols.
 ### Lines 12719 to end (20318)
 I randomly generated lines like shree's text above but with more symbols than numerics.  Each MICR symbol is consit of multiple particles.  They are dificult characters to recognize.  So I thought I'd need more of them.  Also, I put spaces here and there because word boxing seems to be a key functionality of tesseract.  One long word in one line seems to give less training.
 ## Make training data
